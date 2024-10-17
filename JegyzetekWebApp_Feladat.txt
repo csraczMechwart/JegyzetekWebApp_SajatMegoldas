@@ -1,0 +1,13 @@
+JegyzetekWebApp
+
+Klasszikus ToDoList alkalmazás, amely kezeli a csoportosított listákat.
+Minden listának van neve. Szerkeszthető.
+Minden lista külön "kártyán" jelenik meg.
+Minden listához hozzáadható új elem.
+A lista elemei szerkeszthetők, megjelölhetők készként és törölhetők.
+A lista elemei másik kártyára áthelyezhetők.
+A kártya archiválható, majd utána törölhető.
+
+Db terv
+	Kártya(Id, nev)
+	Jegyzet(Id, Tartalom, LétrehozásIdeje, MódosításIdeje, Kész, KártyaId)
