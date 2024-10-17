@@ -10,26 +10,21 @@ using JegyzetekWebApp.Models;
 
 namespace JegyzetekWebApp.Pages
 {
-    public class IndexModel : PageModel
+    public class TeendoListajaModel : PageModel
     {
         private readonly JegyzetekWebApp.Data.TodolistDbContext _context;
 
-        public IndexModel(JegyzetekWebApp.Data.TodolistDbContext context)
+        public TeendoListajaModel(JegyzetekWebApp.Data.TodolistDbContext context)
         {
             _context = context;
         }
-        [BindProperty]
-        public Kartya Kartya { get; set; } = default!;
+
         public IList<Teendo> Teendo { get;set; } = default!;
-        public IList<Kartya> Kartyak { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
             Teendo = await _context.Teendok
                 .Include(t => t.Kartya).ToListAsync();
-            Kartyak = await _context.Kartyak
-                .Include(t => t.Teendok).ToListAsync();
-            
         }
     }
 }

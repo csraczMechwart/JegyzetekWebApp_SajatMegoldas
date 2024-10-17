@@ -1,36 +1,11 @@
 ﻿@page
-@model JegyzetekWebApp.Pages.IndexModel
+@model JegyzetekWebApp.Pages.TeendoListajaModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "TeendoListaja";
 }
 
-<h1>Jegyzetek</h1>
-<form>
-    <label for="UjKartya">Új kártya létrehozása: </label>
-    <input type="text" name="UjKartya" id="UjKartya" />
-    <button onclick="ujKartya()">Létrehozás</button>
-</form>
-@foreach(var k in Model.Kartyak)
-{
-    <div class="card">
-        <h2 class="card-header">@k.Nev</h2>
-        <div class="card-body">
-            <ul>
-                @foreach(var t in k.Teendok){
-                    <li>@t.Tartalom</li>
-                }
-                <form>
-                    <input type="text" name="ujTeendo" id="@("ujTeendo" + k.Id)"/>
-                    <button onclick="ujTeendo(@k.Id)">Ok</button>
-                </form>
-            </ul>
-        </div>
-    </div>
-}
-
-
-
+<h1>TeendoListaja</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
