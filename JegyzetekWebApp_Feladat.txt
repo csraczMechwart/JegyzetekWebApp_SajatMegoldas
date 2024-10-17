@@ -11,3 +11,5 @@ A kártya archiválható, majd utána törölhető.
 Db terv
 	Kártya(Id, nev)
 	Jegyzet(Id, Tartalom, LétrehozásIdeje, MódosításIdeje, Kész, KártyaId)
+
+Classroom ink: https://classroom.github.com/a/ND5m3H-F
