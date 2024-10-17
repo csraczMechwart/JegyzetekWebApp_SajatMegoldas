@@ -1,0 +1,52 @@
+﻿@page
+@model JegyzetekWebApp.Pages.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Teendo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Teendo.Tartalom)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Teendo.Tartalom)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Teendo.Letrehozve)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Teendo.Letrehozve)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Teendo.Modositva)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Teendo.Modositva)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Teendo.Kesz)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Teendo.Kesz)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Teendo.Kartya)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Teendo.Kartya.Id)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Teendo.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

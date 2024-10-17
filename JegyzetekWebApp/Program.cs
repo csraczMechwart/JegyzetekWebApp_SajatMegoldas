@@ -1,8 +1,10 @@
-var builder = WebApplication.CreateBuilder(args);
+using JegyzetekWebApp.Data;
+using Microsoft.EntityFrameworkCore;
 
+var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddDbContext<TodolistDbContext>(options => options.UseSqlite(connectionString: @"Data Source = .\Data\Jegyzetek.db"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

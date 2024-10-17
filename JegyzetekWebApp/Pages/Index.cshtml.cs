@@ -1,20 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using JegyzetekWebApp.Data;
+using JegyzetekWebApp.Models;
 
 namespace JegyzetekWebApp.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly JegyzetekWebApp.Data.TodolistDbContext _context;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(JegyzetekWebApp.Data.TodolistDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public void OnGet()
-        {
+        public IList<Teendo> Teendo { get;set; } = default!;
 
+        public async Task OnGetAsync()
+        {
+            Teendo = await _context.Teendok
+                .Include(t => t.Kartya).ToListAsync();
         }
     }
 }

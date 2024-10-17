@@ -1,0 +1,49 @@
+﻿@page
+@model JegyzetekWebApp.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Teendo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Teendo.Tartalom)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Teendo.Tartalom)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Teendo.Letrehozve)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Teendo.Letrehozve)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Teendo.Modositva)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Teendo.Modositva)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Teendo.Kesz)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Teendo.Kesz)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Teendo.Kartya)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Teendo.Kartya.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Teendo.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
