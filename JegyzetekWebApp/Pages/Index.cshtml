@@ -23,7 +23,7 @@
             <div class="card-body">
                 <ul>
                     @foreach(var t in k.Teendok){
-                        <li>@t.Tartalom <a href="" onclick="teendoTorlese(@t.Id)">&#x1F5D1;</a></li>
+                        <li><a onclick="teendoAllapota(@t.Id)" id="@("teendo" + t.Id)">@t.Tartalom</a> <a href="" onclick="teendoTorlese(@t.Id)">&#x1F5D1;</a></li>
                     }<li>
                         <form>
                             <input type="text" name="ujTeendo" id="@("ujTeendo" + k.Id)"/>

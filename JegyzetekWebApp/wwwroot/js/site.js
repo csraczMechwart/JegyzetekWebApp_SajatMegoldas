@@ -59,7 +59,7 @@ function teendoTorlese(teendoId) {
 
         xhr.send();
 }
-function kartyaTorlese(kartyaId) {       
+    function kartyaTorlese(kartyaId) {       
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
 
@@ -69,6 +69,20 @@ function kartyaTorlese(kartyaId) {
             }
         });
         xhr.open("Delete", "https://localhost:7080/api/Jegyzet/kartyaTorlese/" + kartyaId);
+
+        xhr.send();
+}
+function teendoAllapota(teendoId) {       
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                console.log('Kész állapota változott.')
+                document.getElementById("teendo" + teendoId).style.textDecoration()
+            }
+        });
+    xhr.open("Delete", "https://localhost:7080/api/Jegyzet/Kesz/" + teendoId);
 
         xhr.send();
 }

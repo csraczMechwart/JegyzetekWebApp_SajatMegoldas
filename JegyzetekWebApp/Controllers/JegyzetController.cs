@@ -1,6 +1,7 @@
 ﻿using JegyzetekWebApp.Data;
 using JegyzetekWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace JegyzetekWebApp.Controllers
 {    
@@ -66,6 +67,24 @@ namespace JegyzetekWebApp.Controllers
                 _db.Teendok.Remove(t);
             }
             _db.Kartyak.Remove(kartya);
+            await _db.SaveChangesAsync();
+            return Ok();
+        }
+
+        [Route("Kesz/{teendoId}")]
+        [HttpDelete("{teendoId}")]
+        public async Task<ActionResult> TeendoKesz(int teendoId)
+        {
+            var teendo = _db.Teendok.Find(teendoId);
+            if (teendo == null)
+            {
+                return NotFound();
+            }
+            if(!teendo.Kesz)
+                teendo.Kesz = true;
+            else
+                teendo.Kesz = false;
+            _db.Entry(teendo).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             return Ok();
         }
