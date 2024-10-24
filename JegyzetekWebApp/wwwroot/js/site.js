@@ -59,3 +59,16 @@ function teendoTorlese(teendoId) {
 
         xhr.send();
 }
+function kartyaTorlese(kartyaId) {       
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                console.log('Kártya törölve')
+            }
+        });
+        xhr.open("Delete", "https://localhost:7080/api/Jegyzet/kartyaTorlese/" + kartyaId);
+
+        xhr.send();
+}

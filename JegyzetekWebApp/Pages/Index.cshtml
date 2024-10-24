@@ -14,21 +14,30 @@
 @{int db = 0;}
 @foreach(var k in Model.Kartyak)
 {
-    <div class="card">
-            <h2 class="card-header">@k.Nev</h2>
+    if(db % 3 == 0)
+    {
+        @: <div class="row">
+    }
+    <div class="card col-4">
+        <h2 class="card-header"><span style="display:inline-block; width:78%;">@k.Nev</span> <a href="" onclick="kartyaTorlese(@k.Id)" style="display:inline-block; width:18%; text-align: right;">&#x1F5D1;</a></h2>
             <div class="card-body">
                 <ul>
                     @foreach(var t in k.Teendok){
-                        <li>@t.Tartalom <button onclick="teendoTorlese(@t.Id)">&#x1F5D1;</button></li>
-                    }
-                    <form>
-                        <input type="text" name="ujTeendo" id="@("ujTeendo" + k.Id)"/>
-                        <button onclick="ujSor(@k.Id)">Ok</button>
-                    </form>
+                        <li>@t.Tartalom <a href="" onclick="teendoTorlese(@t.Id)">&#x1F5D1;</a></li>
+                    }<li>
+                        <form>
+                            <input type="text" name="ujTeendo" id="@("ujTeendo" + k.Id)"/>
+                            <button onclick="ujSor(@k.Id)">Ok</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
-
+    if (db % 3 == 2 || Model.Kartyak.Count == db)
+    {
+        @: </div>
+    }
+    db++;
 }
 
 

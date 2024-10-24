@@ -50,5 +50,24 @@ namespace JegyzetekWebApp.Controllers
             await _db.SaveChangesAsync();
             return Ok();
         }
+
+        [Route("kartyaTorlese/{kartyaId}")]
+        [HttpDelete("{kartyaId}")]
+        public async Task<ActionResult> KartyaTorlese(int kartyaId)
+        {
+            var kartya = _db.Kartyak.Find(kartyaId);
+            if (kartya == null)
+            {
+                return NotFound();
+            }
+            var teendok = _db.Teendok.Where(x => x.KartyaId == kartyaId).ToList();
+            foreach (var t in teendok)
+            {
+                _db.Teendok.Remove(t);
+            }
+            _db.Kartyak.Remove(kartya);
+            await _db.SaveChangesAsync();
+            return Ok();
+        }
     }
 }
