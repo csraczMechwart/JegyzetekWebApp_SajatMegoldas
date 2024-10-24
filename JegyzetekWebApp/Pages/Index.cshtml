@@ -11,22 +11,24 @@
     <input type="text" name="UjKartya" id="UjKartya" />
     <button onclick="ujKartya()">Létrehozás</button>
 </form>
+@{int db = 0;}
 @foreach(var k in Model.Kartyak)
 {
     <div class="card">
-        <h2 class="card-header">@k.Nev</h2>
-        <div class="card-body">
-            <ul>
-                @foreach(var t in k.Teendok){
-                    <li>@t.Tartalom</li>
-                }
-                <form>
-                    <input type="text" name="ujTeendo" id="@("ujTeendo" + k.Id)"/>
-                    <button onclick="ujTeendo(@k.Id)">Ok</button>
-                </form>
-            </ul>
+            <h2 class="card-header">@k.Nev</h2>
+            <div class="card-body">
+                <ul>
+                    @foreach(var t in k.Teendok){
+                        <li>@t.Tartalom <button onclick="teendoTorlese(@t.Id)">&#x1F5D1;</button></li>
+                    }
+                    <form>
+                        <input type="text" name="ujTeendo" id="@("ujTeendo" + k.Id)"/>
+                        <button onclick="ujSor(@k.Id)">Ok</button>
+                    </form>
+                </ul>
+            </div>
         </div>
-    </div>
+
 }
 
 

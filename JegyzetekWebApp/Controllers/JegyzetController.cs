@@ -37,5 +37,18 @@ namespace JegyzetekWebApp.Controllers
             await _db.SaveChangesAsync();
             return Ok();
         }
+        [Route("teendoTorlese/{teendoId}")]
+        [HttpDelete("{teendoId}")]
+        public async Task<ActionResult> TeendoTorlese(int teendoId)
+        {
+            var teendo = _db.Teendok.Find(teendoId);
+            if(teendo == null)
+            {
+                return NotFound();
+            }
+            _db.Teendok.Remove(teendo);
+            await _db.SaveChangesAsync();
+            return Ok();
+        }
     }
 }
